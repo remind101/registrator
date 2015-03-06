@@ -14,6 +14,7 @@ import (
 
 var Version string
 
+var hostName = flag.String("hostname", "", "Hostname for Vulcand proxy frontends")
 var hostIp = flag.String("ip", "", "IP for ports mapped to the host")
 var internal = flag.Bool("internal", false, "Use internal ports instead of published ones")
 var refreshInterval = flag.Int("ttl-refresh", 0, "Frequency with which service TTLs are refreshed")
@@ -61,6 +62,7 @@ func main() {
 	}
 
 	b := bridge.New(docker, flag.Arg(0), bridge.Config{
+		HostName:        *hostName,
 		HostIp:          *hostIp,
 		Internal:        *internal,
 		ForceTags:       *forceTags,

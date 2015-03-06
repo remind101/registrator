@@ -19,6 +19,7 @@ type RegistryAdapter interface {
 }
 
 type Config struct {
+	HostName        string
 	HostIp          string
 	Internal        bool
 	ForceTags       string
@@ -31,6 +32,7 @@ type Service struct {
 	ID    string
 	Name  string
 	Port  int
+	Host  string
 	IP    string
 	Tags  []string
 	Attrs map[string]string
